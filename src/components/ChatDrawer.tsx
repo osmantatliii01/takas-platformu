@@ -61,12 +61,12 @@ export const ChatDrawer: React.FC<ChatDrawerProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-slate-950/70 backdrop-blur-md animate-fade-in">
-      <div className="w-full max-w-2xl bg-white dark:bg-slate-900 h-full border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col sm:flex-row text-slate-900 dark:text-slate-100">
+    <div className="fixed inset-0 z-50 flex justify-end bg-slate-950/70 backdrop-blur-md animate-fade-in pt-[max(2.75rem,env(safe-area-inset-top))] sm:pt-0">
+      <div className="relative w-full max-w-2xl bg-white dark:bg-slate-900 h-full border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col sm:flex-row text-slate-900 dark:text-slate-100 overflow-hidden">
         {/* Close Mobile Button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 z-30 p-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200"
+          className="absolute top-3 right-3 z-30 p-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 shadow-md"
         >
           <X className="w-5 h-5 text-slate-500" />
         </button>

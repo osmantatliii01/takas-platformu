@@ -25,7 +25,7 @@ export const NotificationsModal: React.FC<NotificationsModalProps> = ({
   const t = translations[lang];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-[max(2.75rem,env(safe-area-inset-top))] bg-slate-950/80 backdrop-blur-md overflow-y-auto">
       <div className="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl p-6 my-auto text-slate-900 dark:text-slate-100 space-y-4">
         <button
           onClick={onClose}
