@@ -60,7 +60,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const unreadNotifs = notifications.filter((n) => !n.read).length;
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-slate-900/80 dark:bg-slate-950/80 border-b border-slate-800 transition-colors duration-200 shadow-xl">
+    <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-slate-900/80 dark:bg-slate-950/80 border-b border-slate-800 transition-colors duration-200 shadow-xl pt-[max(2.5rem,env(safe-area-inset-top))] sm:pt-[env(safe-area-inset-top)]">
       {/* Top Banner / Announcement Bar for Monetization & App Trust */}
       <div className="bg-gradient-to-r from-indigo-900 via-indigo-700 to-violet-800 text-white text-xs py-1.5 px-4 font-medium flex items-center justify-between border-b border-indigo-500/20">
         <div className="flex items-center gap-2 mx-auto sm:mx-0 overflow-hidden text-ellipsis whitespace-nowrap">
@@ -176,10 +176,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="hidden xl:inline">{t.aiValuationBtn}</span>
             </button>
 
-            {/* Add Listing Primary Button - Sleek Indigo CTA */}
+            {/* Add Listing Primary Button - Sleek Indigo CTA (Hidden on mobile as MobileNav has the central + button) */}
             <button
               onClick={onOpenAddListing}
-              className="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-indigo-500/20 flex items-center gap-1.5 transition-all cursor-pointer transform active:scale-95"
+              className="hidden sm:flex px-3.5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-indigo-500/20 items-center gap-1.5 transition-all cursor-pointer transform active:scale-95 shrink-0"
             >
               <PlusCircle className="w-4 h-4" />
               <span>{t.addListing}</span>
@@ -202,11 +202,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Language Toggle */}
             <button
               onClick={onToggleLang}
-              className="p-2 rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 text-xs font-bold transition-colors cursor-pointer flex items-center gap-1"
+              className="p-1.5 sm:p-2 rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 text-xs font-bold transition-colors cursor-pointer flex items-center gap-1 shrink-0"
               title="Dil Değiştir / Switch Language"
             >
               <Globe className="w-3.5 h-3.5 text-indigo-400" />
-              <span className="uppercase">{lang}</span>
+              <span className="uppercase text-[10px] sm:text-xs">{lang}</span>
             </button>
 
             {/* Theme Toggle */}
