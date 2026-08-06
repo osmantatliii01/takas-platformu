@@ -143,11 +143,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Action Buttons & Navigation */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Listing Quota Indicator Button */}
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+            {/* Listing Quota Indicator Button (Desktop only) */}
             <button
               onClick={onOpenPaywall}
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-indigo-500/40 rounded-xl text-xs font-semibold text-slate-300 transition-all cursor-pointer"
+              className="hidden md:flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-indigo-500/40 rounded-xl text-xs font-semibold text-slate-300 transition-all cursor-pointer"
               title={t.quotaTitle}
             >
               <span className="text-slate-400">Kota:</span>
@@ -169,14 +169,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* AI Valuator Trigger */}
             <button
               onClick={onOpenAiValuator}
-              className="p-2 sm:px-3 sm:py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-300 border border-amber-500/30 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer"
+              className="p-2 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-amber-300 border border-amber-500/30 text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shrink-0"
               title={t.aiValuationTitle}
             >
-              <Sparkles className="w-4 h-4 text-amber-400 animate-spin-slow" />
+              <Sparkles className="w-4 h-4 text-amber-400" />
               <span className="hidden xl:inline">{t.aiValuationBtn}</span>
             </button>
 
-            {/* Add Listing Primary Button - Sleek Indigo CTA (Hidden on mobile as MobileNav has the central + button) */}
+            {/* Add Listing Primary Button - Desktop CTA */}
             <button
               onClick={onOpenAddListing}
               className="hidden sm:flex px-3.5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-indigo-500/20 items-center gap-1.5 transition-all cursor-pointer transform active:scale-95 shrink-0"
@@ -188,7 +188,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Notification Bell */}
             <button
               onClick={onOpenNotifications}
-              className="relative p-2 rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition-colors cursor-pointer"
+              className="relative p-2 rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition-colors cursor-pointer shrink-0"
               title="Bildirimler"
             >
               <Bell className="w-4 h-4" />
@@ -199,20 +199,20 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </button>
 
-            {/* Language Toggle */}
+            {/* Language Toggle (Desktop only) */}
             <button
               onClick={onToggleLang}
-              className="p-1.5 sm:p-2 rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 text-xs font-bold transition-colors cursor-pointer flex items-center gap-1 shrink-0"
+              className="hidden sm:flex p-2 rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 text-xs font-bold transition-colors cursor-pointer items-center gap-1 shrink-0"
               title="Dil Değiştir / Switch Language"
             >
               <Globe className="w-3.5 h-3.5 text-indigo-400" />
-              <span className="uppercase text-[10px] sm:text-xs">{lang}</span>
+              <span className="uppercase text-xs">{lang}</span>
             </button>
 
-            {/* Theme Toggle */}
+            {/* Theme Toggle (Desktop only) */}
             <button
               onClick={onToggleTheme}
-              className="p-2 rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition-colors cursor-pointer"
+              className="hidden sm:flex p-2 rounded-xl text-slate-300 hover:bg-slate-800 border border-slate-800 transition-colors cursor-pointer shrink-0"
               title="Karanlık / Aydınlık Mod"
             >
               {theme === 'dark' ? (
@@ -222,18 +222,19 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </button>
 
-            {/* User Profile Avatar / Quick Auth */}
-            <div className="relative pl-1 border-l border-slate-800">
+            {/* User Profile Avatar / Quick Auth (ALWAYS VISIBLE ON TOP RIGHT) */}
+            <div className="relative pl-1 border-l border-slate-800 shrink-0">
               <button
                 onClick={() => onNavigateView('profile')}
-                className={`flex items-center gap-2 p-1 rounded-xl hover:bg-slate-800 transition-colors ${
+                className={`flex items-center gap-1.5 p-1 rounded-xl hover:bg-slate-800 transition-colors shrink-0 ${
                   currentView === 'profile' ? 'ring-2 ring-indigo-500' : ''
                 }`}
+                title={user.name}
               >
                 <img
                   src={user.avatar}
                   alt={user.name}
-                  className="w-8 h-8 rounded-full object-cover border border-indigo-500/50"
+                  className="w-8 h-8 rounded-full object-cover border-2 border-indigo-500 shrink-0 shadow-md"
                 />
                 <div className="hidden lg:block text-left text-xs">
                   <div className="font-bold text-slate-200 flex items-center gap-1">
