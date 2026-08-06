@@ -60,12 +60,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   const unreadNotifs = notifications.filter((n) => !n.read).length;
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-slate-900/80 dark:bg-slate-950/80 border-b border-slate-800 transition-colors duration-200 shadow-xl pt-[max(2.5rem,env(safe-area-inset-top))] sm:pt-[env(safe-area-inset-top)]">
+    <header className="sticky top-0 z-40 w-full max-w-[100vw] overflow-x-hidden backdrop-blur-xl bg-slate-900/90 dark:bg-slate-950/90 border-b border-slate-800 transition-colors duration-200 shadow-xl pt-[max(2.75rem,env(safe-area-inset-top))] sm:pt-[env(safe-area-inset-top)]">
       {/* Top Banner / Announcement Bar for Monetization & App Trust */}
-      <div className="bg-gradient-to-r from-indigo-900 via-indigo-700 to-violet-800 text-white text-xs py-1.5 px-4 font-medium flex items-center justify-between border-b border-indigo-500/20">
+      <div className="bg-gradient-to-r from-indigo-900 via-indigo-700 to-violet-800 text-white text-xs py-1.5 px-3 sm:px-4 font-medium flex items-center justify-between border-b border-indigo-500/20 max-w-[100vw] overflow-hidden">
         <div className="flex items-center gap-2 mx-auto sm:mx-0 overflow-hidden text-ellipsis whitespace-nowrap">
           <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse shrink-0" />
-          <span className="tracking-wide">
+          <span className="tracking-wide text-[11px] sm:text-xs">
             {lang === 'tr'
               ? 'AI Destekli Akıllı Takas: Eşyalarını sıfır komisyonla adil değerinde takasla!'
               : 'AI-Powered Smart Swap: Trade items commission-free at fair value!'}
@@ -89,8 +89,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-        <div className="flex items-center justify-between gap-3">
+      <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 overflow-hidden">
+        <div className="flex items-center justify-between gap-2 sm:gap-3 w-full">
           {/* Sleek Interface Rotated Square Logo & Brand */}
           <div
             onClick={() => onNavigateView('home')}

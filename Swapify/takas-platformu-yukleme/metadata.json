@@ -1,0 +1,6 @@
+{
+  "name": "Takas Platformu",
+  "description": "Güvenli 2. el eşya takas platformu, AI değerleme ve adil üste para hesaplama, puan tabanlı güven sistemi, lokasyon bazlı eşleşme, mesajlaşma, reklam ve abonelik monetizasyon modelleri.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

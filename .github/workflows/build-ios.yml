@@ -16,11 +16,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: 'npm'
+          node-version: 22
 
       - name: Install dependencies
-        run: npm ci || npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build Web App
         run: npm run build
@@ -28,26 +27,28 @@ jobs:
       - name: Sync Capacitor iOS
         run: npx cap sync ios
 
-      - name: Build iOS Workspace (Unsigned IPA / Archive)
+      - name: Build iOS App Bundle
         run: |
-          xcodebuild -workspace ios/App/App.xcworkspace \
+          xcodebuild -project ios/App/App.xcodeproj \
             -scheme App \
             -configuration Release \
-            -sdk iphoneos \
+            -sdk iphonesimulator \
             -derivedDataPath build/DerivedData \
-            -archivePath build/App.xcarchive \
             CODE_SIGNING_ALLOWED=NO \
-            archive
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            build
 
-      - name: Create Payload Directory for IPA
+      - name: Create Unsigned IPA Package
         run: |
           mkdir -p build/ipa/Payload
-          cp -r build/App.xcarchive/Products/Applications/App.app build/ipa/Payload/
+          APP_PATH=$(find build/DerivedData -name "*.app" | head -n 1)
+          cp -r "$APP_PATH" build/ipa/Payload/
           cd build/ipa
-          zip -r Swapify-unsigned.ipa Payload
+          zip -r Swapify-iOS-unsigned.ipa Payload
 
       - name: Upload Unsigned IPA Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Swapify-iOS-IPA
-          path: build/ipa/Swapify-unsigned.ipa
+          path: build/ipa/Swapify-iOS-unsigned.ipa
