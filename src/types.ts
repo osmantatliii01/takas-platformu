@@ -39,6 +39,8 @@ export interface UserProfile {
   isPremium: boolean;
   listingQuotaUsed: number;
   listingQuotaMax: number;
+  isIdVerified?: boolean;
+  tcNo?: string;
   badges: string[]; // e.g. ["Onaylı Takasçı", "Hızlı Cevap", "Rozetli Satıcı"]
   reviews: UserReview[];
   memberSince: string;

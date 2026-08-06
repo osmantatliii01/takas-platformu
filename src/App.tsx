@@ -54,6 +54,7 @@ import { UserProfileView } from './components/UserProfileView';
 import { AuthModal } from './components/AuthModal';
 import { EscrowGuideModal } from './components/EscrowGuideModal';
 import { NotificationsModal } from './components/NotificationsModal';
+import { IdVerificationModal } from './components/IdVerificationModal';
 
 export default function App() {
   // Theme & Language State
@@ -106,6 +107,7 @@ export default function App() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isEscrowGuideOpen, setIsEscrowGuideOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [isIdVerificationOpen, setIsIdVerificationOpen] = useState(false);
 
   // User Items list
   const userItems = items.filter((i) => i.ownerId === user.id);
@@ -544,6 +546,7 @@ export default function App() {
             onMakeOffer={(i) => setSelectedItemForOffer(i)}
             onOpenAuthModal={() => setIsAuthModalOpen(true)}
             onNavigateStore={() => setCurrentView('store')}
+            onOpenIdVerification={() => setIsIdVerificationOpen(true)}
           />
         )}
 
@@ -685,6 +688,22 @@ export default function App() {
         onActionClick={(link) => {
           if (link === 'paywall') setIsPaywallOpen(true);
           if (link?.startsWith('chat')) setIsChatDrawerOpen(true);
+        }}
+      />
+
+      <IdVerificationModal
+        isOpen={isIdVerificationOpen}
+        lang={lang}
+        onClose={() => setIsIdVerificationOpen(false)}
+        onVerificationSuccess={(tcNo) => {
+          setUser((prev) => ({
+            ...prev,
+            isIdVerified: true,
+            tcNo,
+            badges: prev.badges.includes('T.C. Kimlik Onaylı')
+              ? prev.badges
+              : ['T.C. Kimlik Onaylı', ...prev.badges],
+          }));
         }}
       />
     </div>

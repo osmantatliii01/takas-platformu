@@ -15,7 +15,9 @@ export const CURRENT_USER: UserProfile = {
   isPremium: false,
   listingQuotaUsed: 2,
   listingQuotaMax: 3,
-  badges: ['Onaylı Güvenilir Satıcı', 'Süper Hızlı Cevap', '2 Yıldır Üye', '98% Pozitif Geribildirim'],
+  isIdVerified: true,
+  tcNo: '12345678901',
+  badges: ['T.C. Kimlik Onaylı', 'Onaylı Güvenilir Satıcı', 'Süper Hızlı Cevap', '2 Yıldır Üye'],
   memberSince: 'Ocak 2024',
   reviews: [
     {

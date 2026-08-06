@@ -29,6 +29,7 @@ interface UserProfileViewProps {
   onMakeOffer: (item: Item) => void;
   onOpenAuthModal: () => void;
   onNavigateStore: () => void;
+  onOpenIdVerification?: () => void;
 }
 
 export const UserProfileView: React.FC<UserProfileViewProps> = ({
@@ -41,6 +42,7 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
   onMakeOffer,
   onOpenAuthModal,
   onNavigateStore,
+  onOpenIdVerification,
 }) => {
   const t = translations[lang];
 
@@ -84,6 +86,20 @@ export const UserProfileView: React.FC<UserProfileViewProps> = ({
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-2">
+            {user.isIdVerified ? (
+              <span className="px-3 py-1.5 rounded-2xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-xs font-black flex items-center gap-1.5 shadow-md">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <span>T.C. Kimlik Onaylı</span>
+              </span>
+            ) : (
+              <button
+                onClick={onOpenIdVerification}
+                className="px-3.5 py-2 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs flex items-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-emerald-600/30"
+              >
+                <ShieldCheck className="w-4 h-4" />
+                <span>T.C. Kimlik Doğrula</span>
+              </button>
+            )}
             <button
               onClick={onNavigateStore}
               className="px-4 py-2.5 rounded-2xl bg-slate-900 hover:bg-slate-800 dark:bg-slate-700 text-white font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer shadow-md"
